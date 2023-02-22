@@ -27,7 +27,6 @@ jobs:
 
       - name: Copy files to website repo
         run: |
-          ls -a
           cp -r groupwebsite_generator/kerzendorf-group.github.io/ kerzendorf-group.github.io/
 
       - name: Commit
@@ -36,7 +35,7 @@ jobs:
         run: |
           git config --global user.name "GitHub Actions"
           git config --global user.email "actions@github.com"
-          cd kerzendorf-group.github.io.git
+          cd kerzendorf-group.github.io
           git add .
-          git commit -m "Copy to website"
+          git commit -m "Pushed from generator"
           git push
