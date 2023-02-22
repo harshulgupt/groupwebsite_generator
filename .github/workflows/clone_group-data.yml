@@ -1,4 +1,4 @@
-name: Clone repositories
+name: Clone group-data
 
 on:
   workflow_dispatch:
@@ -19,25 +19,15 @@ jobs:
           git clone git@github.com:kerzendorf-group/group-data.git
           git clone git@github.com:harshulgupt/groupwebsite_generator.git
 
-      - name: List group-data
-        run: |
-          cd group-data
-          ls -a
-
-      - name: List groupwebsite_generator
-        run: |
-          cd groupwebsite_generator
-          ls -a
-
       - name: Copy repository
         run: |
           cd group-data
           ls -a
-          cp -r groupwebsite_data ../groupwebsite_generator/website-data/
-          cp -r images ../groupwebsite_generator/website-data/
-          cp -r members ../groupwebsite_generator/website-data/
-          cp -r people ../groupwebsite_generator/website-data/
-          cp -r research ../groupwebsite_generator/website-data/
+          cp -r groupwebsite_data ../groupwebsite_generator/group-data/
+          cp -r images ../groupwebsite_generator/group-data/
+          cp -r members ../groupwebsite_generator/group-data/
+          cp -r people ../groupwebsite_generator/group-data/
+          cp -r research ../groupwebsite_generator/group-data/
 
       - name: Commit
         env:

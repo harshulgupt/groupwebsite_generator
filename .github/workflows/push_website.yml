@@ -1,27 +1,41 @@
-name: Push website
+name: Push Website
 
 on:
   workflow_dispatch:
-permissions:
-  contents: write
+
 jobs:
-  push-subtree:
+  clone:
+    name: Clone
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
+      - name: Setup SSH
+        uses: MrSquaare/ssh-setup-action@v1
+        with:
+          host: github.com
+          private-key: ${{ secrets.SSH_PRIVATE_KEY }}
 
-      - name: Set up Git
+      - name: Clone repository
         run: |
-          git config user.name "GitHub Actions"
-          git config user.email "actions@github.com"
+          git clone git@github.com:harshulgupt/groupwebsite_generator.git
+          git clone git@github.com:kerzendorf-group/kerzendorf-group.github.io.git
 
-      - name: Push to website repo
+      - name: Clear cloned website repo
+        run: |
+          cd kerzendorf-group.github.io
+          rm -rf *.html
+          rm -rf assets images people sub_research
+
+      - name: Copy files to website repo
+        run: |
+          cp -r groupwebsite_generator/kerzendorf-group.github.io.git/ kerzendorf-group.github.io.git/
+
+      - name: Commit
         env:
           ACCESS_DATA: ${{ secrets.ACCESS_DATA }}
         run: |
-          cd kerzendorf-group.github.io
+          git config --global user.name "GitHub Actions"
+          git config --global user.email "actions@github.com"
+          cd kerzendorf-group.github.io.git
           git add .
-          git commit -m "Pushing website"
+          git commit -m "Copy to website"
           git push
