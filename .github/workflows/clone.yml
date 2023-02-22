@@ -4,25 +4,32 @@ on:
   workflow_dispatch:
 
 jobs:
-  clone-and-push:
+  add-subtree:
     runs-on: ubuntu-latest
+
     steps:
-      - name: Checkout current repository
+      - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Clone or fetch group-data
-        env:
-          ACCESS_DATA: ${{ secrets.ACCESS_DATA }}
-        run: git subtree add --prefix=group-data https://${{ secrets.ACCESS_DATA }}@github.com/kerzendorf-group/group-data.git main --squash
+      - name: Clone private repo
+        uses: actions/checkout@v2
+        with:
+          repository: kerzendorf-group/group-data
+          ref: main
+          token: ${{ secrets.ACCESS_DATA }}
 
-      - name: Configure git
+      - name: Add subtree
         run: |
-          touch kerzendorf-group.github.io/a.txt
-          git config --global user.name "GitHub Actions"
+          git subtree add --prefix=group-data kerzendorf-group/group-data main --squash
+
+      - name: Commit changes
+        run: |
           git config --global user.email "actions@github.com"
+          git config --global user.name "GitHub Actions"
+          git commit -am "Add subtree of group-data repository"
 
-      - name: Commit and push changes
-        run: |
-          git add .
-          git commit -m "Clone my-other-repo"
-          git push
+      - name: Push changes
+        uses: ad-m/github-push-action@master
+        with:
+          branch: main
+          github_token: ${{ secrets.ACCESS_DATA }}
