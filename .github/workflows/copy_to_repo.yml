@@ -1,0 +1,23 @@
+name: Copy to repo
+
+on:
+  workflow_dispatch:
+
+jobs:
+  copy-file:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Pushes test file
+        uses: dmnemec/copy_file_to_another_repo_action@main
+        env:
+          ACCESS_DATA: ${{ secrets.ACCESS_DATA }}
+        with:
+          source_file: "images.zip"
+          destination_repo: "harshulgupt/host"
+          destination_folder: "assets"
+          user_email: "harshulgupt@gmail.com"
+          user_name: "harshulgupt"
+          commit_message: "A custom message for the commit"
