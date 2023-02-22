@@ -27,7 +27,10 @@ jobs:
           cp -r members ../website-data/
           cp -r people ../website-data/
           cp -r research ../website-data/
-          cd ..
+
+      - name: Commit
+        run: |
+          ls -a website-data
           git add website-data
           git commit -m "Repo Files"
           git push
