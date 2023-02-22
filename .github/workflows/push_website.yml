@@ -27,7 +27,7 @@ jobs:
 
       - name: Copy files to website repo
         run: |
-          cp -r groupwebsite_generator/kerzendorf-group.github.io/ kerzendorf-group.github.io/
+          cp -r groupwebsite_generator/kerzendorf-group.github.io kerzendorf-group.github.io/
 
       - name: Commit
         env:
