@@ -17,12 +17,17 @@ jobs:
       - name: Clone repository
         run: |
           git clone git@github.com:kerzendorf-group/group-data.git
-          cd group-data
-          ls -a
+
       - name: Copy repository
         run: |
-          cp -r group-data/ website-data/
-          cd website-data
+          cd group-data
+          ls -a
+          cp -r groupwebsite_data ../website-data/
+          cp -r images ../website-data/
+          cp -r members ../website-data/
+          cp -r people ../website-data/
+          cp -r research ../website-data/
+
           rm -rf .git .github .gitignore
           cd ..
           git add website-data
