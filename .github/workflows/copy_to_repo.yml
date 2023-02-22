@@ -10,13 +10,12 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
-      - name: Configure git
-        run: |
-          git config --global user.name "GitHub Actions"
-          git config --global user.email "actions@github.com"
 
       # Copy the 'post' folder
       - name: Push posts
+          run: |
+            git config --global user.name "GitHub Actions"
+            git config --global user.email "actions@github.com"
         uses: dmnemec/copy_file_to_another_repo_action@main
         env:
           ACCESS_DATA: ${{ secrets.ACCESS_DATA }}
