@@ -10,14 +10,16 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
-      - name: Pushes test file
+      # Copy the 'post' folder
+      - name: Push posts
         uses: dmnemec/copy_file_to_another_repo_action@main
         env:
           ACCESS_DATA: ${{ secrets.ACCESS_DATA }}
         with:
-          source_file: "images.zip"
-          destination_repo: "harshulgupt/host"
-          destination_folder: "assets"
+          source_file: "images.zip" # Folder to copy
+          destination_repo: "harshulgupt/host" # Target repo
+          destination_folder: "assets/" # Folder where to copy it
           user_email: "harshulgupt@gmail.com"
           user_name: "harshulgupt"
-          commit_message: "A custom message for the commit"
+          commit_message: "AUTO: Copying posts from Dom's to REBEL's website"
+          git_server: "github.com"
