@@ -10,15 +10,14 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
-
       # Copy the 'post' folder
       - name: Push posts
-          run: |
-            git config --global user.name "GitHub Actions"
-            git config --global user.email "actions@github.com"
         uses: dmnemec/copy_file_to_another_repo_action@main
         env:
           ACCESS_DATA: ${{ secrets.ACCESS_DATA }}
+        run: |
+          git config --global user.name "GitHub Actions"
+          git config --global user.email "actions@github.com"
         with:
           source_file: "images.zip" # Folder to copy
           destination_repo: "harshulgupt/host" # Target repo
