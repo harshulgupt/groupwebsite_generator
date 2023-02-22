@@ -16,6 +16,6 @@ jobs:
 
       - name: Clone repository
         run: |
-        git clone git@github.com:kerzendorf-group/group-data.git
-        cd group-data
-        ls -a
+          git clone git@github.com:kerzendorf-group/group-data.git
+          cd group-data
+          ls -a
