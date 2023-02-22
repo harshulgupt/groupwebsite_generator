@@ -20,7 +20,7 @@ jobs:
 
       - name: Add subtree
         run: |
-          git subtree add --prefix=group-data kerzendorf-group/group-data main --squash
+          git subtree add --prefix=group-data https://github.com/kerzendorf-group/group-data.git main --squash
 
       - name: Commit changes
         run: |
