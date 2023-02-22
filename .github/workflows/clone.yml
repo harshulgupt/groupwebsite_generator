@@ -17,5 +17,11 @@ jobs:
       - name: Clone repository
         run: |
           git clone git@github.com:kerzendorf-group/group-data.git
-          cd group-data
           ls -a
+          cp -r group-data/ website-data/
+          cd website-data
+          rm -rf .git .github .gitignore
+          cd ..
+          git add website-data
+          git commit -m "Repo Files"
+          git push
