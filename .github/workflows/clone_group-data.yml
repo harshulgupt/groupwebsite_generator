@@ -24,7 +24,7 @@ jobs:
           cd group-data
           ls -a
           cp -r groupwebsite_data ../groupwebsite_generator/group-data/
-          cp -r images ../groupwebsite_generator/group-data/
+          cp -r images ../groupwebsite_generator/kerzendorf-group.github.io/
           cp -r members ../groupwebsite_generator/group-data/
           cp -r people ../groupwebsite_generator/group-data/
           cp -r research ../groupwebsite_generator/group-data/
