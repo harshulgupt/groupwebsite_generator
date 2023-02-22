@@ -27,8 +27,6 @@ jobs:
           cp -r members ../website-data/
           cp -r people ../website-data/
           cp -r research ../website-data/
-
-          rm -rf .git .github .gitignore
           cd ..
           git add website-data
           git commit -m "Repo Files"
