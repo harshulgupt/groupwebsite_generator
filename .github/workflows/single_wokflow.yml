@@ -44,13 +44,6 @@ jobs:
           sudo -H pip3 install --upgrade pip
           pip3 install jupyter
 
-      - name: Install Jupyter and Python3
-        run: |
-          apt-get update
-          sudo apt-get install -y python3-pip
-          sudo -H pip3 install --upgrade pip
-          pip3 install jupyter
-
       - name: Run Notebooks
         run: |
           cd groupwebsite_generator
