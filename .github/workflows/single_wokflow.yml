@@ -5,7 +5,7 @@ on:
 
 jobs:
   Update_website:
-    name: Setting up SSH for cloning
+    name: Updating website
     runs-on: ubuntu-latest
     steps:
       - name: Setup SSH
@@ -30,9 +30,9 @@ jobs:
           rm -rf *.html
           rm -rf assets images people sub_research
 
-      - name: Setup directories inside kerzendorf-group.github.io.git
+      - name: Setup directories inside kerzendorf-group.github.io
         run: |
-          cd kerzendorf-group.github.io.git
+          cd kerzendorf-group.github.io
           mkdir people sub_research
           cp -r ../groupwebsite_generator/assets ./
           cp -r ../group-data/images ./
