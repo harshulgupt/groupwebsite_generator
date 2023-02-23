@@ -37,6 +37,17 @@ jobs:
           cp -r ../groupwebsite_generator/assets ./
           cp -r ../group-data/images ./
 
+      - name: Install Jupyter and Python3
+      - uses: yaananth/run-notebook@v2
+      - uses: actions/setup-python@v3
+        with:
+          python-version: "pypy3.9"
+        run: |
+          apt-get update
+          sudo apt-get install -y python3-pip
+          sudo -H pip3 install --upgrade pip
+          pip3 install jupyter
+
       - name: Run Notebooks
         run: |
           cd groupwebsite_generator
