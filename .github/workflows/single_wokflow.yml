@@ -39,14 +39,15 @@ jobs:
           SECRETS: ${{ toJson(secrets) }}
           GITHUB: ${{ toJson(github) }}
           ACCESS_DATA: ${{ secrets.ACCESS_DATA }}
-        run: |
-          pwd
-          ls -a
-
         with:
           notebook: "notebooks/homepage.ipynb"
           isReport: False
           poll: True
+      - name:
+        run: |
+          pwd
+          ls -a
+
       - uses: yaananth/run-notebook@v2
         env:
           RUNNER: ${{ toJson(runner) }}
