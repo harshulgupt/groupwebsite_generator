@@ -39,6 +39,10 @@ jobs:
           SECRETS: ${{ toJson(secrets) }}
           GITHUB: ${{ toJson(github) }}
           ACCESS_DATA: ${{ secrets.ACCESS_DATA }}
+        run: |
+          pwd
+          ls -a
+
         with:
           notebook: "notebooks/homepage.ipynb"
           isReport: False
