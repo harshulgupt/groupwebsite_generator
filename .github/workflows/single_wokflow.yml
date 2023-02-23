@@ -22,6 +22,7 @@ jobs:
 
       - name: List clones
         run: |
+          pwd
           ls -a
 
       - uses: actions/checkout@v3
