@@ -30,7 +30,7 @@ jobs:
         uses: actions/setup-python@v3
       - name:
         run: |
-          pwd
+          cd group-data
           ls -a
       - uses: yaananth/run-notebook@v2
         env:
